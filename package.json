@@ -1,0 +1,8 @@
+{
+  "name": "campus-management-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Учебная лаборатория адаптивно-аддитивного управления кампусом",
+  "scripts": {"test": "node tests/math.test.cjs"},
+  "engines": {"node": ">=18"}
+}
