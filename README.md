@@ -1,63 +1,85 @@
-# Кампус · Лаборатория управления
+# Campus Management Lab
 
-Отдельная образовательная и исследовательская платформа по адаптивно-аддитивному управлению университетской инфраструктурой. Она не заменяет и не изменяет ранее созданную «Мастерскую решений».
+[English](#english) | [Русский](#русский)
 
-Сайт открывается без регистрации. Расчёты выполняются в браузере, состояние существует только в текущем сеансе. Нет серверной базы, API-ключей, собственного отслеживания пользователей, внешних библиотек, CDN или обязательной сборки.
+Live site: <https://arseniy24rus.github.io/campus-management-lab/>
 
-## Публикация на GitHub Pages
+## English
 
-Распакуйте содержимое архива в корень нового репозитория. Файл `index.html` должен находиться рядом с каталогами `assets`, `js`, `data`, `docs` и `tests`, а не внутри дополнительной вложенной папки.
+![Hero screenshot of the Russian-only Campus Management Lab decision path](assets/visuals/readme/hero.png)
 
-В настройках репозитория откройте **Settings → Pages → Build and deployment → Source: Deploy from a branch**. Выберите ветку, например `main`, и каталог **/(root)**, сохраните настройки. После завершения публикации откройте адрес, показанный GitHub. Файл `.nojekyll` уже включён.
+*The application UI is Russian-only. This README is bilingual, but the screenshots and GIF use the real shipped Russian interface.*
 
-Официальная инструкция: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+![Animated demo of the decision path, forecast chart, calendar adjustment, and economics comparison table](assets/visuals/readme/demo.gif)
 
-Установка Node, запуск npm и сборка для публикации не нужны. Все пути относительные. Маршруты используют `#/…`, поэтому прямые ссылки на разделы работают и в репозитории с произвольным именем.
+![English architecture diagram for Campus Management Lab](assets/visuals/readme/architecture-en.svg)
 
-## Просмотр до публикации
+Campus Management Lab is a static educational and research companion for an adaptive-additive management case about university infrastructure. It is for readers who need to move from a dissertation chapter to a traceable browser exercise: read the study case, inspect the model inputs, compare alternatives, and see which values are source-backed, educational, or missing. It is not a campus digital twin, an operational planning system, or evidence that a real implementation would be economical.
 
-Отдельно передан файл **Campus_Management_Lab.html**: это та же платформа с данными, стилями и кодом внутри одного HTML. Его можно открыть современным браузером. Либо откройте `index.html` из распакованного каталога. Браузер должен разрешать JavaScript и открытие локальных файлов; в управляемой корпоративной среде эти возможности могут быть ограничены.
+The main user scenario follows a management decision. A learner opens the 12-stage case path, answers a short stage question, jumps to the relevant model, changes an input in the forecast page, then opens the program calendar or economics screen to compare admissible alternatives. The GIF shows exactly that rhythm: study case -> model inputs -> alternatives -> comparison result. Answers and settings live only in the current browser session. There is no account system, no backend database, no API key, no analytics tracker, and no required build step for publication.
 
-## Три маршрута пользователя
+The scientific source is D. V. Filippov, "Adaptive-additive system for managing the development of the social-infrastructure complex of a higher education institution", 2026, specialty 5.2.6 Management. The repository uses a provided manuscript and research archive as a fixed 2026 source package. [docs/SOURCES.md](docs/SOURCES.md) records the SHA-256 of the provided DOCX and archive, the observed layer, the expert/model layer, measure passports, formulas, and the material that could not be reconstructed. The full dissertation file and original archive are not embedded in the public site.
 
-**Понять исследование.** Девять коротких разделов следуют девяти параграфам рукописи. Дословные определения раскрываются отдельно от учебного пересказа. Основные понятия доступны рядом с расчётом; математические основы начинаются с количества, доли, суммы и матрицы.
+The data layer is intentionally explicit. It includes 16 official series with 69 observed values, 420 expert-model trajectory values, 12 measure passports, 35 source graph vertex names, 65 reference tables, 53 formulas, 24 math primers, nine explanatory readings, and 69 checked learning answers. Observed rows come from the dissertation's table P12.7; dashes remain missing values, not zeros. Expert/model values are kept separate from official observations. Four object correspondences were not reconstructed by number order. This is a limitation, not a gap filled by invention.
 
-**Изучить данные.** Официальный ряд читается вместе с определением, единицей и временным основанием. Экспертно-модельные траектории находятся в отдельной вкладке. Прогнозы рассчитываются по официальным наблюдениям, а не по механической смеси разных источников.
+The computation layer lives in [js/math.js](js/math.js): RW, RT, and PP forecasts, mixture calculations, economics, information value, event traces, resource calendars, and validation helpers. [js/data.js](js/data.js) carries transferred source values, tables, quotes, and formulas. [js/content.js](js/content.js) provides the educational explanations and tasks. [js/formula-guides.js](js/formula-guides.js) explains symbols locally because the same letter can mean different things in different formulas. [js/views.js](js/views.js) composes screens, [js/ui.js](js/ui.js) renders UI and charts, and [js/app.js](js/app.js) handles routing and session behavior.
 
-**Пройти решение.** Три учебных случая проходят двенадцать стадий: подтверждённая история и профилактика M05–M06; учебное пространство M12; ресурсосбережение M11. Из стадии можно перейти к связанному расчёту, паспорту меры, формуле или правилу проверки.
+The missing-data boundaries are non-negotiable. The provided archive did not contain the full 307-edge graph, the exact rational certificate of 140 inequalities, the complete log of 115,978 events, the source 360-value comparison panel, or the array of 300 simulation repetitions. Their published characteristics may appear as references, but the platform does not claim to reproduce those experiments. The small graph, short traces, and A-E alternatives are educational implementations based on described rules. A measure passport is not a measured effect or a real budget authorization.
 
-## Содержимое
+Run the static app with any simple server, or open `index.html` when the browser permits local scripts. Mathematical checks require only Node 18+:
 
-Включены 16 официальных рядов и все их 69 значений, 420 экспертно-модельных значений, 12 паспортов мер, 35 исходных названий вершин экспертного графа, 65 справочных таблиц, 53 формулы, 24 математические основы, девять разборов и 69 заданий с объяснением. Глоссарий соединяет базовые понятия с определениями системы управления.
+```bash
+python -m http.server 8000
+npm test
+```
 
-Для каждой формулы сохранена исходная математическая запись, добавлены её чтение словами и пояснения символов. Формулы выведены в нативном MathML без передачи во внешний сервис. Исходные фрагменты OMML сохранены в `data/equation-*.xml`.
+`npm test` runs [tests/math.test.cjs](tests/math.test.cjs). The release validation in [docs/VALIDATION.md](docs/VALIDATION.md) reports 5,866 mathematical assertions, browser checks for 187 routes, 69 learning answers, exported CSV/JSON files, responsive widths, keyboard checks, search, dialogs, and no application network requests. [docs/COVERAGE.md](docs/COVERAGE.md) maps screens to dissertation sections and reconstructed boundaries. Current README visuals were recorded from the real static app with Playwright.
 
-## Вычисления
+Rights and attribution are conservative. Texts, formulas, and data are not relicensed as open material by this repository. Public placement of unpublished fragments should be approved by the rights holder. Cite D. V. Filippov and the fixed 2026 source package when discussing the research basis, and cite this repository only for the browser educational implementation and its explicitly documented calculations.
 
-Реализованы RW, RT и PP в точной содержательной спецификации рукописи: преобразования, обучающие масштабы, регуляризация, распределения, маргинальные интервалы, MASE, RMSSE и нормированный CRPS. Контрольное сравнение включает 96 прогнозов и совпадает с опубликованной таблицей после её округления. Дополнительное сравнение 189 прогнозов не выдаётся за выполненное этой платформой.
+<details>
+<summary>Publication notes retained from the previous README</summary>
 
-Экономический модуль фильтрует A–E по срокам, повторяемости, независимой приёмке, деньгам и труду. Выполнимые варианты сравниваются по ожиданию, наихудшим затратам или максимальному сожалению. Диагностика пересчитывает условные вероятности и стоимость последующего выбора с учётом собственных ресурсов и задержки.
+Publish the repository root through GitHub Pages: `index.html` should sit beside `assets/`, `js/`, `data/`, `docs/`, and `tests/`. Choose Settings -> Pages -> Deploy from a branch -> `main` or the actual branch -> `/(root)`. The `.nojekyll` file is included. Routes use `#/...`, and paths are relative, so the repository name does not need to be edited.
 
-Работают ограниченная вероятностная смесь с квантилями по полной функции распределения, короткие событийные трассы, 16 классов намеренных нарушений, перебор 720 последовательностей, проверка пересечения полных интервалов, область пересогласования программы, малый учебный лаговый граф и численный сертификат его сжатия, разложение компонентных разрывов.
+</details>
 
-## Важные границы
+## Русский
 
-Полной окончательной таблицы рёбер и задержек графа, полного журнала событий, сравнительной панели из 360 значений и массива имитационного эксперимента в предоставленном архиве не обнаружено. Их опубликованные результаты доступны как справочные, но не обозначаются заново воспроизведёнными. Учебная сеть из трёх вершин открыто отделена от исходной карты из 35 вершин.
+![Главный скриншот русскоязычного пути решения Campus Management Lab](assets/visuals/readme/hero.png)
 
-Паспорта M01–M12 не содержат измеренного эффекта и фактического бюджета реализации. Поэтому выбор мер показывает отношения и необходимые проверки, но не создаёт вымышленные бюджеты, проценты улучшения или производственное разрешение на исполнение. Планируемая подготовительная мера не считается уже выполненной предпосылкой.
+*Интерфейс приложения русскоязычный. README двуязычный, но изображения показывают настоящую русскую версию, без выдуманного перевода.*
 
-Условные A–E — не смета университета. Синтетические проверки — не реальные заявки. Прогноз не является нормативом. Правильность алгоритма не доказывает экономическую эффективность внедрения.
+![GIF-демонстрация пути решения, прогноза, календаря программы и таблицы экономического сравнения](assets/visuals/readme/demo.gif)
 
-## Проверки и разработка
+![Русская схема архитектуры Campus Management Lab](assets/visuals/readme/architecture-ru.svg)
 
-Для повторения автономных математических тестов достаточно Node 18 или новее: `node tests/math.test.cjs` либо `npm test`. Зависимостей нет. Подробности и ограничения испытаний приведены в `docs/VALIDATION.md`.
+Campus Management Lab - статический образовательный и исследовательский спутник кейса об адаптивно-аддитивном управлении университетской инфраструктурой. Он нужен читателю, который хочет пройти от главы диссертации к проверяемому браузерному упражнению: прочитать учебный случай, увидеть входы модели, сравнить альтернативы и понять, какие значения взяты из источника, какие являются учебными, а какие отсутствуют. Это не цифровой двойник кампуса, не промышленная система планирования и не доказательство экономической эффективности реального внедрения.
 
-`js/data.js` — перенесённые исходные значения, таблицы, цитаты и формулы. `js/content.js` — учебное изложение и задания. `js/formula-guides.js` — пояснения формул. `js/math.js` — расчёты. `js/ui.js` — элементы интерфейса и диаграммы. `js/views.js` — разделы. `js/app.js` — маршруты, сеанс и действия. `assets/styles.css` — оформление.
+Основной пользовательский сценарий идёт по управленческому решению. Ученик открывает путь из 12 стадий, отвечает на короткий вопрос, переходит к связанной модели, меняет вход на странице прогноза, затем открывает календарь программы или экономический экран, чтобы сравнить допустимые альтернативы. GIF показывает именно этот ритм: учебный кейс -> входы модели -> варианты -> результат сравнения. Ответы и настройки живут только в текущем сеансе браузера. Аккаунтов, серверной базы, API-ключей, аналитического трекера и обязательной сборки для публикации нет.
 
-Не вставляйте неподтверждённые значения на место отсутствующих данных. Новые учебные параметры сохраняйте отдельно от исходного слоя и обозначайте как учебные.
+Научная основа - Д. В. Филиппов, «Адаптивно-аддитивная система управления развитием социально-инфраструктурного комплекса высшего учебного заведения», 2026, специальность 5.2.6 «Менеджмент». Репозиторий использует предоставленные рукопись и исследовательский архив как фиксированный исходный пакет 2026 года. [docs/SOURCES.md](docs/SOURCES.md) фиксирует SHA-256 DOCX и архива, наблюдаемый слой, экспертно-модельный слой, паспорта мер, формулы и материалы, которые не удалось восстановить. Полный файл диссертации и исходный архив в публичный сайт не вложены.
 
-## Происхождение и права
+Слой данных сделан явным. Включены 16 официальных рядов с 69 наблюдаемыми значениями, 420 экспертно-модельных значений, 12 паспортов мер, 35 исходных названий вершин графа, 65 справочных таблиц, 53 формулы, 24 математические основы, девять разборов и 69 проверяемых учебных ответов. Наблюдения перенесены из таблицы П12.7; прочерки сохранены как отсутствующие значения, а не нули. E/M-траектории отделены от официальных наблюдений. Четыре объектных соответствия не восстановлены по порядку номеров. Это ограничение, а не место для выдуманного заполнения.
 
-Научная основа: Д. В. Филиппов. «Адаптивно-аддитивная система управления развитием социально-инфраструктурного комплекса высшего учебного заведения», 2026, специальность 5.2.6 «Менеджмент». Использованы предоставленные рукопись и исследовательский архив. Метаданные и область воспроизведения раскрыты в `docs/SOURCES.md` и в разделе сайта «Источники и границы».
+Расчёты находятся в [js/math.js](js/math.js): RW, RT и PP-прогнозы, смеси, экономика, ценность информации, событийные трассы, календарь ресурсов и проверки. [js/data.js](js/data.js) хранит перенесённые значения, таблицы, цитаты и формулы. [js/content.js](js/content.js) даёт учебные объяснения и задания. [js/formula-guides.js](js/formula-guides.js) объясняет символы локально, потому что одна и та же буква может иметь разные смыслы в разных формулах. [js/views.js](js/views.js) собирает экраны, [js/ui.js](js/ui.js) рисует интерфейс и графики, [js/app.js](js/app.js) управляет маршрутом и сеансом.
 
-Тексты, формулы и данные не переобъявлены материалами свободной лицензии. Перед публичным размещением неопубликованных фрагментов следует согласовать право их публикации. Полный файл диссертации и исходный архив в этот сайт не вложены; опубликованы только используемые в лаборатории материалы.
+Границы отсутствующих данных принципиальны. В архиве не было полного графа из 307 базовых рёбер, точного рационального сертификата из 140 неравенств, полного журнала 115 978 событий, исходной панели 360 значений и массива 300 имитационных повторов. Их опубликованные характеристики могут показываться как справка, но платформа не заявляет повторение этих экспериментов. Малый граф, короткие трассы и альтернативы A-E - учебные реализации по описанным правилам. Паспорт меры не является измеренным эффектом или реальным бюджетным разрешением.
+
+Запуск статического приложения возможен через простой сервер или прямое открытие `index.html`, если браузер разрешает локальные скрипты. Математические проверки требуют только Node 18+:
+
+```bash
+python -m http.server 8000
+npm test
+```
+
+`npm test` запускает [tests/math.test.cjs](tests/math.test.cjs). В [docs/VALIDATION.md](docs/VALIDATION.md) зафиксированы 5866 математических проверок, браузерные проходы по 187 маршрутам, 69 учебных ответов, выгрузки CSV/JSON, responsive-ширины, клавиатура, поиск, диалоги и отсутствие сетевых запросов приложения. [docs/COVERAGE.md](docs/COVERAGE.md) связывает экраны с разделами диссертации и границами восстановления. Визуалы README записаны Playwright с настоящего статического приложения.
+
+Права и атрибуция трактуются осторожно. Тексты, формулы и данные не переобъявлены открытыми материалами этой репозиторием. Публичное размещение неопубликованных фрагментов следует согласовать с правообладателем. При обсуждении научной основы нужно ссылаться на Д. В. Филиппова и фиксированный исходный пакет 2026 года, а этот репозиторий цитировать как браузерную образовательную реализацию с явно описанными расчётами.
+
+<details>
+<summary>Сохранённые заметки о публикации</summary>
+
+Публикуйте корень репозитория через GitHub Pages: `index.html` должен лежать рядом с `assets/`, `js/`, `data/`, `docs/` и `tests/`. В настройках выберите Settings -> Pages -> Deploy from a branch -> `main` или фактическую ветку -> `/(root)`. Файл `.nojekyll` уже включён. Маршруты используют `#/...`, пути относительные, поэтому имя репозитория менять в коде не нужно.
+
+</details>

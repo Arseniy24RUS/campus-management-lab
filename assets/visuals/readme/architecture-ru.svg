@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="850" viewBox="0 0 1000 850" role="img" aria-labelledby="title desc">
+  <title id="title">Рабочий контур Campus Management Lab</title>
+  <desc id="desc">Материалы диссертации переходят в выверенные данные, входы модели, альтернативы и прозрачный браузерный результат.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto">
+      <path d="M2 2 L12 7 L2 12 Z" fill="#17584e"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fbf8}
+      .box{fill:#fff;stroke:#17584e;stroke-width:2.3}
+      .soft{fill:#eef7d2}
+      .footer{fill:#fff7e5;stroke:#d9a948;stroke-width:2}
+      text{font-family:Arial, Helvetica, sans-serif;letter-spacing:0;fill:#0b302c}
+      .title{font-size:30px;font-weight:700}
+      .boxhead{font-size:27px;font-weight:700}
+      .body{font-size:24px;fill:#4a5f59}
+      .foot{font-size:23px;font-weight:700;fill:#0b302c}
+      .arrow{stroke:#17584e;stroke-width:3.6;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="1000" height="850"/>
+  <text class="title" x="52" y="56">Кампус Лаборатория управления:</text>
+<text class="title" x="52" y="94">источник, модель, варианты</text>
+  <rect class="box soft" x="70" y="124" width="860" height="176" rx="12"/>
+<text class="boxhead" x="98" y="168">1. Исходный пакет</text>
+<text class="body" x="98" y="210">Материалы диссертации Д. В. Филиппова и архив</text>
+<text class="body" x="98" y="240">Таблицы, глоссарий, формулы и OMML-фрагменты</text>
+<text class="body" x="98" y="270">Используется фиксированный источник с атрибуцией</text>
+  <line class="arrow" x1="500" y1="316" x2="500" y2="352"/>
+  <rect class="box" x="70" y="370" width="860" height="188" rx="12"/>
+<text class="boxhead" x="98" y="414">2. Данные модели</text>
+<text class="body" x="98" y="456">16 официальных рядов, 69 наблюдений, 420 E/M</text>
+<text class="body" x="98" y="486">Расчеты RW, RT и PP показывают формулы</text>
+<text class="body" x="98" y="516">Нет массивов или логов — это отмечено явно</text>
+  <line class="arrow" x1="500" y1="574" x2="500" y2="610"/>
+  <rect class="box soft" x="70" y="628" width="860" height="176" rx="12"/>
+<text class="boxhead" x="98" y="672">3. Учебный сценарий</text>
+<text class="body" x="98" y="714">Прочитать кейс и изменить входы модели</text>
+<text class="body" x="98" y="744">Графики, календарь и таблица сравнения меняются</text>
+<text class="body" x="98" y="774">Экспорты показывают источник и границы метода</text>
+  <rect class="footer" x="70" y="818" width="860" height="26" rx="7"/>
+  <text class="foot" x="88" y="838">Граница: полный граф, журналы и эффект внедрения не выдуманы.</text>
+</svg>
