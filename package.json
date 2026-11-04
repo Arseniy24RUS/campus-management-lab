@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "description": "Учебная лаборатория адаптивно-аддитивного управления кампусом",
-  "scripts": {"test": "node tests/math.test.cjs"},
+  "scripts": {"test": "node tests/math.test.cjs && node tests/calculator.test.cjs"},
   "engines": {"node": ">=18"}
 }

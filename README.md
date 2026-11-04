@@ -24,7 +24,15 @@ Campus Management Lab is a static educational and research companion for an adap
 
 ### Workflow
 
-The main user scenario follows a management decision. A learner opens the 12-stage case path, answers a short stage question, jumps to the relevant model, changes an input in the forecast page, then opens the program calendar or economics screen to compare admissible alternatives. The GIF shows exactly that rhythm: study case -> model inputs -> alternatives -> comparison result. Answers and settings live only in the current browser session. There is no account system, no backend database, no API key, no analytics tracker, and no required build step for publication.
+The main user scenario follows a management decision. A learner opens the 12-stage case path, answers a short stage question, jumps to the relevant model, changes an input in the forecast page, then opens the program calendar or economics screen to compare admissible alternatives. The GIF shows exactly that rhythm: study case -> model inputs -> alternatives -> comparison result. Educational answers and settings live only in the current browser session; the practical calculator saves its case locally in the browser. There is no account system, no backend database, no API key, no analytics tracker, and no required build step for publication.
+
+### Practical case calculator
+
+[Open the calculator](https://arseniy24rus.github.io/campus-management-lab/#/calculator) to start from the author’s A–E example or create a case with your own inputs. The workflow checks mandatory conditions and resources before comparing expected cost, worst-case cost, or maximum regret. Separate blocks calculate diagnostic information value, lifecycle cost, and a weighted performance index. Missing values remain missing; all alternatives require consistent units and a common comparison boundary.
+
+Cases are saved locally in the current browser. JSON export/import transfers the input case, CSV exports results, and the print view supports the browser’s Save as PDF command. The app does not send case data to a server. Resetting the educational session does not delete the calculator case.
+
+This module uses the separately supplied **«Филиппов диссертация 20.10.2026.docx»**, SHA-256 `8a9b8bbd21207f64b9e016b02adfd38d894c7bab9ecb0fcd80c739701e125aa8`. Its references (§ 2.3; formulas 3.9, 3.11–3.16; table 3.18) belong to a different manuscript version from the original educational material below. The calculator does not certify regulatory compliance or establish empirical savings. [Calculator methodology and guide, in Russian](docs/CALCULATOR.md) explains the inputs, assumptions, author example, and limits.
 
 ### Data and methodology
 
@@ -49,7 +57,7 @@ python -m http.server 8000
 npm test
 ```
 
-`npm test` runs [tests/math.test.cjs](tests/math.test.cjs). The release validation in [docs/VALIDATION.md](docs/VALIDATION.md) reports 5,866 mathematical assertions, browser checks for 187 routes, 69 learning answers, exported CSV/JSON files, responsive widths, keyboard checks, search, dialogs, and no application network requests. [docs/COVERAGE.md](docs/COVERAGE.md) maps screens to dissertation sections and reconstructed boundaries. Current README visuals were recorded from the real static app with Playwright.
+`npm test` runs the repository’s mathematical checks, including the practical calculator. The original educational release validation in [docs/VALIDATION.md](docs/VALIDATION.md) reports 5,866 mathematical assertions, browser checks for 187 routes, 69 learning answers, exported CSV/JSON files, responsive widths, keyboard checks, search, dialogs, and no application network requests. [docs/COVERAGE.md](docs/COVERAGE.md) maps screens to dissertation sections and reconstructed boundaries. Current README visuals were recorded from the real static app with Playwright.
 
 ### Rights and attribution
 
@@ -82,7 +90,15 @@ Campus Management Lab - статический образовательный и
 
 ### Сценарий
 
-Основной пользовательский сценарий идёт по управленческому решению. Ученик открывает путь из 12 стадий, отвечает на короткий вопрос, переходит к связанной модели, меняет вход на странице прогноза, затем открывает календарь программы или экономический экран, чтобы сравнить допустимые альтернативы. GIF показывает именно этот ритм: учебный кейс -> входы модели -> варианты -> результат сравнения. Ответы и настройки живут только в текущем сеансе браузера. Аккаунтов, серверной базы, API-ключей, аналитического трекера и обязательной сборки для публикации нет.
+Основной пользовательский сценарий идёт по управленческому решению. Ученик открывает путь из 12 стадий, отвечает на короткий вопрос, переходит к связанной модели, меняет вход на странице прогноза, затем открывает календарь программы или экономический экран, чтобы сравнить допустимые альтернативы. GIF показывает именно этот ритм: учебный кейс -> входы модели -> варианты -> результат сравнения. Ответы и настройки учебных разделов живут только в текущем сеансе браузера; кейс прикладного калькулятора сохраняется локально в браузере. Аккаунтов, серверной базы, API-ключей, аналитического трекера и обязательной сборки для публикации нет.
+
+### Прикладной калькулятор
+
+[Откройте калькулятор](https://arseniy24rus.github.io/campus-management-lab/#/calculator), чтобы разобрать авторский пример A–E или создать случай со своими данными. Обязательные условия и ресурсы проверяются до сравнения ожидаемых затрат, максимальных затрат или максимального сожаления. Отдельные блоки рассчитывают ценность диагностики, стоимость жизненного цикла и интегральный показатель достижения целей. Пропуски не превращаются в нули; единицы и границы сравнения должны быть согласованы.
+
+Кейс сохраняется локально в текущем браузере. JSON позволяет перенести исходные данные и повторно открыть случай, CSV — выгрузить результаты, печатная версия — сохранить отчёт в PDF средствами браузера. Приложение не отправляет данные кейса на сервер. Сброс учебного сеанса не удаляет кейс калькулятора.
+
+Модуль использует отдельно предоставленный файл **«Филиппов диссертация 20.10.2026.docx»**, SHA-256 `8a9b8bbd21207f64b9e016b02adfd38d894c7bab9ecb0fcd80c739701e125aa8`. Его ссылки (§ 2.3; формулы 3.9, 3.11–3.16; таблица 3.18) относятся к другой редакции рукописи по сравнению с первоначальными учебными материалами ниже. Калькулятор не удостоверяет нормативное соответствие и не подтверждает фактическую экономию. [Методика и руководство](docs/CALCULATOR.md) раскрывают входы, допущения, авторский пример и границы применения.
 
 ### Данные и методика
 
@@ -107,7 +123,7 @@ python -m http.server 8000
 npm test
 ```
 
-`npm test` запускает [tests/math.test.cjs](tests/math.test.cjs). В [docs/VALIDATION.md](docs/VALIDATION.md) зафиксированы 5866 математических проверок, браузерные проходы по 187 маршрутам, 69 учебных ответов, выгрузки CSV/JSON, адаптивные ширины, клавиатура, поиск, диалоги и отсутствие сетевых запросов приложения. [docs/COVERAGE.md](docs/COVERAGE.md) связывает экраны с разделами диссертации и границами восстановления. Визуалы README записаны Playwright с настоящего статического приложения.
+`npm test` запускает математические проверки проекта, включая прикладной калькулятор. В [docs/VALIDATION.md](docs/VALIDATION.md) для первоначального учебного выпуска зафиксированы 5866 математических проверок, браузерные проходы по 187 маршрутам, 69 учебных ответов, выгрузки CSV/JSON, адаптивные ширины, клавиатура, поиск, диалоги и отсутствие сетевых запросов приложения. [docs/COVERAGE.md](docs/COVERAGE.md) связывает экраны с разделами диссертации и границами восстановления. Визуалы README записаны Playwright с настоящего статического приложения.
 
 ### Права и атрибуция
 
